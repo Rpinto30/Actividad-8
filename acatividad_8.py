@@ -11,15 +11,22 @@ while True:
             products.append(prod)
             print(f"\nProducto {prod} agreagado correctamente")
         case '2':
-            print("-" * 10 + "Modificar producto" + "-" * 10)
-            print(f"Productos: {products}")
-            prod = int(input("Ingrese el indice del producto que quiere modificar: "))
+            if len(products) > 0:
+                print("-" * 10 + "Modificar producto" + "-" * 10)
+                while True:
+                    print("Productos: [", end='')
+                    for i in range(len(products)):
+                        if i == len(products)-1: print(f"{products[i]}: {i}]\n")
+                        else: print(f"{products[i]}: {i}", end=', ')
+                    prod = int(input("Ingrese el indice del producto que quiere modificar: "))
+                    if prod < len(products): break
+                    else: print("\nLo siento, producto no encontrado, intente de nuevo")
 
-            if prod < len(products):
                 new_prod = input("Ingrese nuevo producto: ")
                 products[prod] = new_prod
                 print("\nProducto agregado!")
-            else: print("\nLo siento, producto no encontrado")
+
+            else: print("\nLo siento, no hay productos registrados")
         case '3':
             print("-" * 10 + "Eliminar producto" + "-" * 10)
             print(f"Productos: {products}")
@@ -30,7 +37,9 @@ while True:
                 print("\nProducto eliminado")
             else: print("\nLo siento, producto no existente")
         case '4':
-            print(f"Productos: {products}")
+            for i in range(len(products)):
+                if i == len(products) - 1: print(f"{products[i]}: {i}]\n")
+                else: print(f"{products[i]}: {i}", end=', ')
         case '5':
             print("\nHasta pronto!")
             break
