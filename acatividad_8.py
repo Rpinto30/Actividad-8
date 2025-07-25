@@ -28,14 +28,16 @@ while True:
 
             else: print("\nLo siento, no hay productos registrados")
         case '3':
-            print("-" * 10 + "Eliminar producto" + "-" * 10)
-            print(f"Productos: {products}")
-            prod = input("Ingrese producto que quiera eliminar: ")
+            if len(products) > 0:
+                print("-" * 10 + "Eliminar producto" + "-" * 10)
+                print(f"Productos: {products}")
+                prod = input("Ingrese producto que quiera eliminar: ")
 
-            if prod in products:
-                products.remove(prod)
-                print("\nProducto eliminado")
-            else: print("\nLo siento, producto no existente")
+                if prod in products:
+                    products.remove(prod)
+                    print("\nProducto eliminado")
+                else: print("\nLo siento, producto no existente")
+            else: print("\nLo siento, no hay prodcutos registrados")
         case '4':
             for i in range(len(products)):
                 if i == len(products) - 1: print(f"{products[i]}: {i}]\n")
